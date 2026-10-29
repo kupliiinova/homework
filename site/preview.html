@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>MAGIC — предпросмотр по дате</title>
+</head>
+<body>
+<script>
+  /*
+    Предпросмотр сайта «как будто сегодня другая дата».
+    preview.html               — сегодня 3 ноября 2026
+    preview.html?date=2026-11-24 — любая другая дата
+    Перед запуском сайта этот файл можно удалить — на основной сайт он не влияет.
+  */
+  (function () {
+    var p = new URLSearchParams(location.search).get('date');
+    var date = /^\d{4}-\d{2}-\d{2}$/.test(p || '') ? p : '2026-11-03';
+    fetch('index.html', { cache: 'no-store' })
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        var badge = '<div style="position:fixed;z-index:999;left:12px;bottom:12px;padding:8px 14px;border-radius:999px;' +
+          'background:#1C2A1E;color:#F0F1BA;font:600 13px/1 system-ui,sans-serif;box-shadow:0 6px 20px rgba(0,0,0,.3)">' +
+          'Предпросмотр: сегодня ' + date.split('-').reverse().join('.') + '</div>';
+        html = html.replace('<head>', '<head><script>window.MAGIC_TODAY = "' + date + '";<\/script>')
+                   .replace('</body>', badge + '</body>');
+        document.open();
+        document.write(html);
+        document.close();
+      });
+  })();
+</script>
+</body>
+</html>
