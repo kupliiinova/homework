@@ -1,17 +1,4 @@
-html {
-    font-family: Ubuntu, sans-serif;
-}
-h1, h2, h3, h4, h5, h6, p {
-    margin: 0;
-}
-body * {
-    box-sizing: border-box;
-}
-.container {
-    max-width: 1250px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
+
 h1 {
     font-family: "Oswald", sans-serif;
     font-weight: 600;
@@ -70,7 +57,7 @@ h1 {
     padding: 0 0 0 15px;
     margin: 0 0 80px;
 }
-.article-item {
+.article-item:not(:last-child) {
     margin-bottom: 16px;
 }
 .article-item::marker {
@@ -101,4 +88,7 @@ h1 {
     border: none;
     border-radius: 50%;
     cursor: pointer;
+}
+.article-text:last-child {
+    margin-bottom: 0px;
 }

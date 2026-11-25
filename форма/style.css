@@ -1,7 +1,14 @@
+* {
+    box-sizing: border-box;
+}
 body
  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 14px;
+    min-height: 100vh;
 }
 textarea 
 {
@@ -9,13 +16,16 @@ textarea
     border-radius: 5px;
     padding: 5px 5px;
     background-color: #ffe8e8;
-    width: 190px;
+    width: 100%;
+    display: inline-block ;
     resize: vertical;
-    max-height: 200px;
-    display: block ;
+    max-height: 100%;
     margin-bottom: 10px;
     min-height: 30px; 
     margin-top: 4px;
+}
+textarea:disabled {
+    opacity: 0.5;
 }
 .input
 {
@@ -23,12 +33,15 @@ textarea
     border-radius: 5px;
     padding: 5px 5px;
     background-color: rgb(255, 232, 232);
-    width: 190px;
-    display: block ;
+    width: 100%;
+    display: inline-block ;
     margin-bottom: 10px;
     margin-top: 4px;
 }
-button
+.input:disabled {
+    opacity: 0.5;
+}
+.button
 {
     color: #704141;
     background-color: #ffe8e8;
@@ -39,10 +52,24 @@ button
     display: block ;
     margin-bottom: 5px;
     margin-top: 10px;
+    transition: opacity 0.2s;
+}
+.button:hover {
+    opacity: 0.8;
+}
+.button:not(:disabled):active {
+    background-color: #ebd5d5;
+}
+.button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 .form
 {
-    width: 250px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+    padding: 30px;
 }
 .legend
 {
@@ -60,21 +87,59 @@ textarea::placeholder
 fieldset
 {
     border: 2px solid #704141;
-    background-color: rgb(255, 199, 199);
+    background-color: #ffc7c7;
     border-radius: 10px;
+    padding: 20px;
 }
 .input:focus {
-  border-color: #ffffff;
-  outline: none;
+    border-color: #ffffff;
+    outline: none;
+    outline-offset: 1px;
 }
 textarea:focus {
-  border-color: #ffffff;
-  outline: none;
+    border-color: #ffffff;
+    outline: none;
+    outline-offset: 1px;
 }
 h3
 {
     color: #380202;
 }
+.checkbox {
+    appearance: none;
+    margin: 0;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.checkbox::after {
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #704141;
+    border-radius: 4px;
+}
+.checkbox:checked::after {
+    background: #ffe8e8 url("./images/check-icon.svg") center no-repeat;
+}
+label {
+    display: block;
+}
 
-
-
+.button:focus {
+    border-color: #ffffff;
+    outline: none;
+    outline-offset: 1px;
+}
+.checkbox:focus {
+    outline: none;
+}
+.checkbox:hover::after,
+.checkbox:focus::after {
+    border-color: #fff;
+}

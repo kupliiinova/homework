@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Практика по формам</title>
+    <title>Стилизация формы</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./css/normalize.css" />
   </head>
   <body>
     <form class="form">
@@ -49,11 +50,11 @@
           Сообщение
           <textarea name="message" placeholder="Ваше сообщение"></textarea>
         </label>
-        <label
-          ><input type="checkbox" required class="checkbox" />Я принимаю
-          правила</label
-        >
-        <button>Отправить</button>
+        <label class="label checkbox-label">
+          <input class="checkbox" type="checkbox" name="checkbox" required />Я
+          принимаю правила
+        </label>
+        <button class="button">Отправить</button>
       </fieldset>
     </form>
   </body>
